@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Text;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -45,7 +46,7 @@ public class SHGen : MonoBehaviour
         shGenShader.SetBuffer(mainId, "RWSHBuffer", buffer);
         shGenShader.SetTexture(mainId, "_Cubemap", cubemap);
 
-        shGenShader.Dispatch(mainId, coefNum, 1, 1);
+        shGenShader.Dispatch(mainId, 1, 1, 1);
     }
 
     public ComputeBuffer CalcSH(int degree, ComputeShader shGenShader)
@@ -77,10 +78,13 @@ public class SHGen : MonoBehaviour
         {
             var datas = new Vector4[n];
             buf.GetData(datas);
+            var sb = new StringBuilder();
             foreach (var item in datas)
             {
-                Debug.Log(item);
+                //Debug.Log(item);
+                sb.AppendLine(item.ToString());
             }
+            Debug.Log(sb);
         }
 
     }
