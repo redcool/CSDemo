@@ -11,7 +11,7 @@ public class ShaderCalcTestEditor : Editor {
     {
         base.OnInspectorGUI();
 
-        if (GUILayout.Button("Test"))
+        if (GUILayout.Button("Dispatch CS"))
         {
             var inst = (ShaderCalcTest)target;
             inst.InvokeCS();
@@ -37,6 +37,7 @@ public class ShaderCalcTest : MonoBehaviour
 
         cs.SetBuffer(kernelId, resultBufName, resultBuf);
         cs.SetMatrix("unity_ObjectToWorld", transform.localToWorldMatrix);
+        
         cs.Dispatch(kernelId, groupCounts.x, groupCounts.y, groupCounts.z);
 
         resultBuf.GetData(data);
