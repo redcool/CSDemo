@@ -11,14 +11,14 @@ public class ShaderCalcTestEditor : Editor {
     {
         base.OnInspectorGUI();
 
-        if (GUILayout.Button("Dispatch CS"))
+        if (GUILayout.Button("Dispatch Kernel"))
         {
             var inst = (ShaderCalcTest)target;
             inst.InvokeCS();
         }
     }
 }
-#endif
+
 
 public class ShaderCalcTest : MonoBehaviour
 {
@@ -52,3 +52,4 @@ public class ShaderCalcTest : MonoBehaviour
     }
 
 }
+#endif
